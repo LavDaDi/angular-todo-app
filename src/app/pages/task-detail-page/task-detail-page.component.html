@@ -1,0 +1,42 @@
+<div class="task-detail-wrapper" *ngIf="task">
+  <mat-card class="task-detail-card">
+    <mat-card-header>
+      <mat-card-title>
+        <ng-container *ngIf="!editMode; else editTitle">
+          {{ task.title }}
+        </ng-container>
+        <ng-template #editTitle>
+          <input [(ngModel)]="task.title" placeholder="Заголовок задачи" class="edit-title" />
+        </ng-template>
+      </mat-card-title>
+
+      <mat-chip [color]="task.status === 'done' ? 'primary' : 'warn'" selected>
+        {{ task.status === 'done' ? '✔️ Выполнена' : '🕓 Не выполнена' }}
+      </mat-chip>
+    </mat-card-header>
+
+    <mat-card-content>
+      <ng-container *ngIf="!editMode; else editDesc">
+        <p class="task-desc">
+          {{ task.description || 'Нет описания' }}
+        </p>
+      </ng-container>
+      <ng-template #editDesc>
+        <textarea [(ngModel)]="task.description" placeholder="Описание задачи" class="edit-desc"></textarea>
+      </ng-template>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="goBack()">Назад</button>
+
+      <button mat-button color="accent" *ngIf="!editMode" (click)="toggleStatus()">
+        {{ task.status === 'done' ? 'Сделать невыполненной' : 'Пометить как выполненную' }}
+      </button>
+
+      <button mat-button color="accent" *ngIf="!editMode" (click)="enableEdit()">✏️ Редактировать</button>
+
+      <button mat-button color="primary" *ngIf="editMode" (click)="updateTask()">💾 Сохранить</button>
+      <button mat-button color="warn" *ngIf="editMode" (click)="cancelEdit()">Отмена</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

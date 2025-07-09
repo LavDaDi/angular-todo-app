@@ -1,0 +1,21 @@
+<div class="task-form-overlay">
+  <div class="task-form-card">
+    <h2 class="form-title">Добавить задачу</h2>
+    <form #taskForm="ngForm" class="task-form-content">
+      <mat-form-field appearance="outline">
+        <mat-label>Название</mat-label>
+        <input matInput [(ngModel)]="newTask.title" name="title" required maxlength="50">
+        <mat-error *ngIf="taskForm.controls['title']?.invalid && taskForm.controls['title']?.touched">Название обязательно (макс. 50 символов)</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Описание</mat-label>
+        <textarea matInput [(ngModel)]="newTask.description" name="description" maxlength="200"></textarea>
+        <mat-hint>Макс. 200 символов</mat-hint>
+      </mat-form-field>
+      <div class="form-actions">
+        <button mat-raised-button color="primary" (click)="addTask()" [disabled]="!taskForm.valid">Добавить</button>
+        <button mat-stroked-button (click)="closeForm.emit()">Отмена</button>
+      </div>
+    </form>
+  </div>
+</div>

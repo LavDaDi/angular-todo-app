@@ -1,0 +1,98 @@
+.task-list-wrapper {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: #3f51b5;
+  }
+
+  .quote {
+    font-style: italic;
+    text-align: center;
+    color: #666;
+    opacity: 0.9;
+    font-size: 1.1rem;
+  }
+
+  .header-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out;
+  height: 100%;
+  overflow: hidden; 
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &.done mat-card-title {
+    text-decoration: line-through;
+    color: #777;
+  }
+
+    mat-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    .status-chip {
+      font-weight: 500;
+      height: 24px;
+    }
+
+    mat-card-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      flex-grow: 1;
+    }
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    padding-top: 0.5rem;
+    overflow: hidden;
+
+    .task-desc {
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.4;
+      max-height: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  mat-card-actions {
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+    margin-top: auto;
+  }
+}

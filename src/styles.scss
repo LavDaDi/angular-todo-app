@@ -1,1 +1,116 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+
+/* ===== Темы через CSS-переменные ===== */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #212121;
+  --card-bg: #ffffff;
+  --chip-bg: #e0e0e0;
+  --icon-color: #212121;
+  --tooltip-bg: #ffffff;
+  --tooltip-text: #212121;
+}
+
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #949494;
+  --card-bg: #1e1e1e;
+  --chip-bg: #2c2c2c;
+  --icon-color: #e0e0e0;
+  --tooltip-bg: #2c2c2c;
+  --tooltip-text: #f5f5f5;
+}
+
+/* ===== Глобальные базовые стили ===== */
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Контейнеры */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ====== Angular Material адаптация ====== */
+
+/* Карточки */
+mat-card,
+mat-card-title,
+mat-card-subtitle,
+mat-card-content {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+input.edit-title,
+textarea.edit-desc {
+  width: 100%;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--chip-bg);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+input.edit-title::placeholder,
+textarea.edit-desc::placeholder {
+  color: rgba(128, 128, 128, 0.6); /* или var(--text-color) с прозрачностью */
+}
+
+
+/* Чипы */
+mat-chip {
+  background-color: var(--chip-bg) !important;
+  color: var(--text-color) !important;
+  font-weight: 500;
+}
+
+/* Иконки */
+mat-icon {
+  color: var(--icon-color) !important;
+  fill: var(--icon-color) !important;
+}
+
+/* Текст во всех заголовках */
+h1, h2, h3, h4, h5, h6,
+p,
+span,
+button {
+  color: var(--text-color) !important;
+}
+
+/* Кнопки */
+button.mat-button,
+button.mat-icon-button {
+  color: var(--text-color) !important;
+}
+
+/* Tooltip (новая MDC структура) */
+::ng-deep .mdc-tooltip__surface {
+  background-color: var(--tooltip-bg) !important;
+  color: var(--tooltip-text) !important;
+  border: 1px solid var(--chip-bg);
+  font-size: 0.875rem;
+}
+
+/* Прогресс бар кастомизация (если хочется) */
+::ng-deep .mat-mdc-progress-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Плавность при смене темы */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

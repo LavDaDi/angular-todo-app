@@ -1,0 +1,74 @@
+<div class="task-list-wrapper">
+  <h2>Ваши задачи</h2>
+
+  <div class="quote">
+    <blockquote>
+      “Делай сегодня то, что другие не хотят — завтра будешь жить так, как другие не могут.”
+    </blockquote>
+  </div>
+
+  <mat-progress-bar
+    mode="determinate"
+    [value]="completedPercentage"
+    color="accent"
+  ></mat-progress-bar>
+
+  <div class="header-actions">
+    <button mat-raised-button color="accent" (click)="openTaskForm()">
+      <mat-icon>add</mat-icon>
+      Добавить задачу
+    </button>
+  </div>
+
+  <div class="task-grid">
+    <mat-card
+      *ngFor="let task of tasks"
+      class="task-card"
+      [ngClass]="{ done: task.status === 'done' }"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <mat-chip
+          [color]="task.status === 'done' ? 'primary' : 'warn'"
+          selected
+          class="status-chip"
+        >
+          {{ task.status === 'done' ? '✔ Выполнена' : '🕓 Не выполнена' }}
+        </mat-chip>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="task-desc">{{ task.description || 'Без описания' }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="viewTask(task.id)"
+          matTooltip="Подробнее"
+        >
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteTask(task.id)"
+          matTooltip="Удалить"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="accent"
+          (click)="updateStatus(task.id, task.status)"
+          matTooltip="Изменить статус"
+        >
+          <mat-icon>check_circle</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <app-task-form *ngIf="showForm" (taskAdded)="onTaskAdded($event)" (closeForm)="showForm = false"></app-task-form>
+</div>

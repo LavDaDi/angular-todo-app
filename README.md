@@ -1,59 +1,59 @@
-# TodoApp
+# 📝 Angular ToDo App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+> **Тестовое задание:** одностраничное приложение для управления задачами.  
+> Реализовано с использованием Angular 17, Angular Material и современных UI/UX практик.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📌 Цель проекта
+
+Создать SPA (Single Page Application) — список задач с возможностью их добавления, просмотра, изменения и удаления.  
+Фокус сделан на:
+
+- чистой архитектуре (standalone components)
+- реактивности
+- адаптивности
+- пользовательском комфорте (темы, анимации)
+
+---
+
+## 🚀 Функциональность
+
+| Возможность                         | Описание                                                                            |
+|-------------------------------------|-------------------------------------------------------------------------------------|
+| 📋 Список задач (`/tasks`)         | Главная страница со всеми задачами                                                 |
+| ➕ Добавление задачи                | Через форму (обязателен `title`, опционален `description`, статус — pending)       |
+| ✅ Изменение статуса задачи        | Кнопка в списке переключает между "выполнено" / "не выполнено"                     |
+| ✏️ Редактирование задачи           | На странице `/tasks/:id` (inline редактирование `title` и `description`)           |
+| ❌ Удаление задачи                 | Доступно со страницы списка                                                        |
+| 🔍 Просмотр деталей задачи         | Отдельный маршрут `/tasks/:id`                                                     |
+| 🌗 Переключение светлой/тёмной темы | Кнопка в углу экрана, тема сохраняется в `localStorage`                            |
+| 📊 Прогресс выполнения              | Прогресс-бар, показывающий % завершённых задач                                     |
+| 💥 Анимации                        | Плавное появление задач при отрисовке                                              |
+| 📱 Адаптивность                    | Поддержка мобильных и планшетных экранов                                           |
+
+---
+
+## 🧱 Используемый стек
+
+- **Angular 17** — Standalone компоненты, маршрутизация
+- **TypeScript** — типизация, строгий стиль
+- **Angular Material** — UI-компоненты (карточки, кнопки, чипы, прогрессбар)
+- **RxJS / BehaviorSubject** — реактивное состояние
+- **SCSS** — кастомные темы (через CSS-переменные)
+- **LocalStorage** — сохранение тёмной/светлой темы
+
+---
+
+## 🛠️ Установка и запуск проекта
 
 ```bash
-ng serve
-```
+# Клонировать репозиторий
+git clone https://github.com/your-username/angular-todo-app.git
+cd angular-todo-app
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+# Установить зависимости
+npm install
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Запустить приложение
+npm start
